@@ -28,10 +28,9 @@ const Card = (props) => {
     return(
         <Wrapper>
             <Title>Nasa Photo of the Day</Title>
-            <Date>Date: {props.Date}</Date>
-            <Image src={props.Image} alt="Nasa Image of the Day" />
+            <Date>Date:{props.date}</Date>
+            <Image src={props.url} alt="Nasa Image of the Day" />
             <explanation><h3>{props.explanation}</h3></explanation> 
-            <title>Title: {props.title}</title>
         </Wrapper>
     )
 }

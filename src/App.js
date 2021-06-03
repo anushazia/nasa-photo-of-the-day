@@ -6,11 +6,8 @@ import PhotoCard from "./Components/PhotoCard";
 function App() {
   return (
      <div className="App">
-      {/* <p>
-        <Card />
-      </p> */}
-      <p>
-        <PhotoCard />
+     <p>
+      <PhotoCard />
       </p>
     </div>
   );
