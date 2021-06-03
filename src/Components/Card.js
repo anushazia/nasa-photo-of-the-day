@@ -1,20 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import PhotoCard from "./PhotoCard"
-import axios from 'axios'
+import React from 'react'
+import styled from 'styled-components'
 
-const Card = () => {
-    const [photos, setPhotos] = useState([])
+const Wrapper = styled.div `
+    background: aliceblue;
+    color: gray;
 
-    useEffect(() => {
-        axios
-        .get("https://api.nasa.gov/planetary/apod?api_key=DvVAg0z5x0xC86UIpoeVQBozhVeOuKRHvqHnQp9z")
-        .then(response => {
-            setPhotos(response.data)
-            console.log(response.data)
-        })
-    }, [])
+  `
+const Title = styled.h1 `
+    color: blueviolet;
+    margin-bottom: 1mm;
+`
+const Date = styled.h2 `
+    font-size: 20px;
+    color: royalblue;
+    margin-top: 1mm;
+`
+const explanation = styled.p `
+  /* text-align: center; */
+`
+const Image = styled.img `
+  ${'' /* width: 570px;
+  max-height: 270px; */}
+  
+`
 
-    return <PhotoCard data={photos} />
+const Card = (props) => {
+    return(
+        <Wrapper>
+            <Title>Nasa Photo of the Day</Title>
+            <Date>Date: {props.Date}</Date>
+            <Image src={props.Image} alt="Nasa Image of the Day" />
+            <explanation><h3>{props.explanation}</h3></explanation> 
+            <title>Title: {props.title}</title>
+        </Wrapper>
+    )
 }
 export default Card;
 

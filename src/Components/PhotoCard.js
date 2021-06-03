@@ -1,21 +1,26 @@
-import React from 'react' 
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Card from './Card'
 
-const Image = `styled.img
-  width: 250px;
-  height: 200px;`
+export default function PhotoCard() {
+    const [photoData, setPhotoData] = useState([])
 
-
-const PhotoCard = props => {
-    console.log("props", props)
-
+    useEffect(() => {
+        axios
+        .get('https://api.nasa.gov/planetary/apod?api_key=FT5XZsX8C7JRdKvWhPiQxbN4yPRkxOraRl8OmqKA')
+        .then((response) => {
+        console.log(response.data)
+        setPhotoData(response.data)
+    })
+        .catch((error) => {
+        console.log("data was not returned", error)
+     })
+    }, [])
     return (
-        <div>
-            <h1>{props.data.title}</h1>
-            <p>{props.data.date}</p>
-            <p>{props.data.explanation}</p>
-            <Image src={props.data.url} />
-            <p>{props.data.copyright}</p>
+        <div className="container">
+            <Card data={photoData.date} explanation={photoData.explanation} url={photoData.hdurl} img={photoData.url} title={photoData.title} />
         </div>
+       
     )
-}
-export default PhotoCard;
+
+} 
